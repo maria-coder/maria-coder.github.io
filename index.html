@@ -23,7 +23,25 @@
    <UL><LI>Snapchat: mariabernal328</LI></UL> 
   
 <p><strong>Ubicación:</strong></p>
+ var watch_id = navigator.geolocation.watchPosition(function(objPosition)
+{
+	// Procesar posición
+}, function(objPositionError)
+{
+	// Procesar errores
+}, {
+	maximumAge: 75000,
+	timeout: 15000
+});
 
+
+
+document.getElementById("stop-button").onclick = function()
+{
+	navigator.geolocation.clearWatch(watch_id);
+};
+  </body>	  </body>
+</html>	</html>
  </body>
 </html>
 
