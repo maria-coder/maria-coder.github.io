@@ -23,9 +23,21 @@
    <UL><LI>Snapchat: mariabernal328</LI></UL> 
   
 <p><strong>Ubicación:</strong></p>
- <iframe style= "border: 0;" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15763.446645060843!2d-79.526654!3d8.984875!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2spa!4v1571087193102!5m2!1ses!2spa" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+ var watch_id = navigator.geolocation.watchPosition(function(objPosition)
+{
+	// Procesar posición
+}, function(objPositionError)
+{
+	// Procesar errores
+}, {
+	maximumAge: 75000,
+	timeout: 15000
+});
 
-  
+document.getElementById("stop-button").onclick = function()
+{
+	navigator.geolocation.clearWatch(watch_id);
+};
   </body>
 </html>
 
