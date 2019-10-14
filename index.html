@@ -23,21 +23,33 @@
    <UL><LI>Snapchat: mariabernal328</LI></UL> 
   
 <p><strong>Ubicación:</strong></p>
- var watch_id = navigator.geolocation.watchPosition(function(objPosition)
-{
-	// Procesar posición
-}, function(objPositionError)
-{
-	// Procesar errores
-}, {
-	maximumAge: 75000,
-	timeout: 15000
-});
+ar id, target, option;
 
-document.getElementById("stop-button").onclick = function()
-{
-	navigator.geolocation.clearWatch(watch_id);
+function success(pos) {
+  var crd = pos.coords;
+
+  if (target.latitude === crd.latitude && target.longitude === crd.longitude) {
+    console.log('Congratulation, you reach the target');
+    navigator.geolocation.clearWatch(id);
+  }
 };
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
+
+target = {
+  latitude : 0,
+  longitude: 0,
+}
+
+options = {
+  enableHighAccuracy: false,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+id = navigator.geolocation.watchPosition(success, error, options);
   </body>
 </html>
 
